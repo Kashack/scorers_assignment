@@ -6,7 +6,7 @@ import 'package:http/http.dart' as http;
 import '../custom_exception.dart';
 
 class AuthenticationRepository {
-  final baseUrl = dotenv.get('API_URL',fallback: 'API_URL');
+  final baseUrl = dotenv.get('API_URL',fallback: 'Api not found!');
   Future SignUpUser(String firstName, String lastName, String email,
       String username, String password, String repeatPassword) async {
     var body = jsonEncode({
