@@ -2,7 +2,6 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:bloc/bloc.dart';
-import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
 import 'package:scorers_assignment/logic/api/user_detail_repository.dart';
 import 'package:scorers_assignment/logic/custom_exception.dart';
@@ -29,7 +28,6 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
         emit(ProfileSuccess(value));
       });
     } catch (e) {
-      print(e);
       if (e is SocketException) {
         emit(ProfileError(e.message));
       } else if (e is UserDetailException) {
@@ -49,7 +47,6 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
         emit(ProfileSuccess(value));
       });
     } catch (e) {
-      print(e);
       if (e is SocketException) {
         emit(ProfileUpdateError(e.message));
       } else if (e is UserDetailException) {

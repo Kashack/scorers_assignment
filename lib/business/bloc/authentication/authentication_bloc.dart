@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:convert';
 import 'dart:io';
 
 import 'package:bloc/bloc.dart';
@@ -9,10 +8,9 @@ import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:meta/meta.dart';
 import 'package:scorers_assignment/logic/api/authentication_repository.dart';
 
-import '../../logic/custom_exception.dart';
+import '../../../logic/custom_exception.dart';
 
 part 'authentication_event.dart';
-
 part 'authentication_state.dart';
 
 class AuthenticationBloc
@@ -36,12 +34,10 @@ class AuthenticationBloc
       });
     } catch (e) {
       if (e is SocketException) {
-        print(e.message);
         emit(UnAuthenticatedState(errorMessage: e.message));
       } else if (e is UserNotFoundException) {
         emit(UnAuthenticatedState(errorMessage: e.message));
       } else {
-        print('e: $e');
         emit(UnAuthenticatedState(errorMessage: e.runtimeType.toString()));
       }
     }
@@ -51,7 +47,7 @@ class AuthenticationBloc
       AuthenticationSignUpRequested event,
       Emitter<AuthenticationState> emit) async {
     try {
-      emit(AuthenticationLoadingState());
+      emit(const AuthenticationLoadingState());
       await repository.SignUpUser(
               event.first_name,
               event.last_name,
@@ -64,12 +60,10 @@ class AuthenticationBloc
       });
     } catch (e) {
       if (e is SocketException) {
-        print(e.message);
         emit(UnAuthenticatedState(errorMessage: e.message));
       } else if (e is UserNotFoundException) {
         emit(UnAuthenticatedState(errorMessage: e.message));
       } else {
-        print('e: $e');
         emit(UnAuthenticatedState(errorMessage: e.runtimeType.toString()));
       }
     }
@@ -78,7 +72,7 @@ class AuthenticationBloc
   FutureOr<void> _onAuthenticationLogOutRequested(
       AuthenticationLogoutRequested event, Emitter<AuthenticationState> emit) async {
     // emit(AuthenticationLoadingState());
-    emit(AuthenticationInitial());
+    emit(const AuthenticationInitial());
     // await AuthenticationBloc().close();
     // await HydratedBloc.storage.close();
   }

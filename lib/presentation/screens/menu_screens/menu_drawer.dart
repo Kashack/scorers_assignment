@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -6,7 +5,7 @@ import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:scorers_assignment/presentation/components/custom_box_container.dart';
 import 'package:scorers_assignment/presentation/routers/router_constant.dart';
 
-import '../../../business/bloc/authentication_bloc.dart';
+import '../../../business/bloc/authentication/authentication_bloc.dart';
 import '../../../business/bloc/profile/profile_bloc.dart';
 import '../../../utility/constant.dart';
 
@@ -41,17 +40,16 @@ class MenuDrawer extends StatelessWidget {
                             visible: authState == AuthenticationStatus.authenticated ? true: false,
                             child: GestureDetector(
                               onTap: () {
-                                print("token: $token");
                                 context.read<ProfileBloc>().add(UserDetailRequested(token: token));
                                 Navigator.pushNamed(context, RouterConstant.Profile);
                               },
                               child: Container(
-                                padding: EdgeInsets.all(16),
+                                padding: const EdgeInsets.all(16),
                                 decoration: BoxDecoration(
                                     color: secondaryColor,
                                     borderRadius: BorderRadius.circular(15)
                                 ),
-                                child: Row(
+                                child: const Row(
                                   children: [
                                     Icon(Icons.account_circle_outlined),
                                     SizedBox(width: 10,),
@@ -65,7 +63,7 @@ class MenuDrawer extends StatelessWidget {
                       ),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   Visibility(
@@ -75,13 +73,13 @@ class MenuDrawer extends StatelessWidget {
                         Navigator.pushNamed(context, RouterConstant.SignUp);
                       },
                       child: CustomBoxContainer(
-                        margin: EdgeInsets.symmetric(vertical: 4),
-                        padding: EdgeInsets.symmetric(horizontal: 8,vertical: 12),
+                        margin: const EdgeInsets.symmetric(vertical: 4),
+                        padding: const EdgeInsets.symmetric(horizontal: 8,vertical: 12),
                         child: Row(
                           children: [
                             SvgPicture.asset('assets/icons/sign_up.svg'),
-                            SizedBox(width: 8,),
-                            Text('Sign Up',style: TextStyle(color: Colors.white),)
+                            const SizedBox(width: 8,),
+                            const Text('Sign Up',style: TextStyle(color: Colors.white),)
                           ],
                         ),
                       ),
@@ -94,13 +92,13 @@ class MenuDrawer extends StatelessWidget {
                         Navigator.pushNamed(context, RouterConstant.LogIn);
                       },
                       child: CustomBoxContainer(
-                        margin: EdgeInsets.symmetric(vertical: 4),
-                        padding: EdgeInsets.symmetric(horizontal: 8,vertical: 12),
+                        margin: const EdgeInsets.symmetric(vertical: 4),
+                        padding: const EdgeInsets.symmetric(horizontal: 8,vertical: 12),
                         child: Row(
                           children: [
                             SvgPicture.asset('assets/icons/login.svg'),
-                            SizedBox(width: 8,),
-                            Text('Login',style: TextStyle(color: Colors.white),)
+                            const SizedBox(width: 8,),
+                            const Text('Login',style: TextStyle(color: Colors.white),)
                           ],
                         ),
                       ),
@@ -114,8 +112,8 @@ class MenuDrawer extends StatelessWidget {
                           context: context,
                           builder: (context) =>
                               AlertDialog(
-                                title: Column(
-                                  children: const [
+                                title: const Column(
+                                  children: [
                                     Divider(),
                                     SizedBox(
                                       height: 10,
@@ -170,13 +168,13 @@ class MenuDrawer extends StatelessWidget {
                         );
                       },
                       child: CustomBoxContainer(
-                        margin: EdgeInsets.symmetric(vertical: 4),
-                        padding: EdgeInsets.symmetric(horizontal: 8,vertical: 12),
+                        margin: const EdgeInsets.symmetric(vertical: 4),
+                        padding: const EdgeInsets.symmetric(horizontal: 8,vertical: 12),
                         child: Row(
                           children: [
                             SvgPicture.asset('assets/icons/logout.svg'),
-                            SizedBox(width: 8,),
-                            Text('Logout',style: TextStyle(color: Colors.white),)
+                            const SizedBox(width: 8,),
+                            const Text('Logout',style: TextStyle(color: Colors.white),)
                           ],
                         ),
                       ),

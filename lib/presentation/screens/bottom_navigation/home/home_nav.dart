@@ -19,7 +19,7 @@ class HomeNavigation extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               Container(
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   color: Color(0xFF008F8F),
                   boxShadow: [
                     BoxShadow(
@@ -29,7 +29,7 @@ class HomeNavigation extends StatelessWidget {
                     )
                   ]
                 ),
-                child: TabBar(
+                child: const TabBar(
                   labelColor: Colors.black,
                   indicator: BoxDecoration(
                     color: Colors.white,
@@ -53,7 +53,7 @@ class HomeNavigation extends StatelessWidget {
             ],
           ),
         ),
-        body: TabBarView(
+        body: const TabBarView(
           children: [
             LiveMatchesScreen(),
             NewMatchesScreen(),

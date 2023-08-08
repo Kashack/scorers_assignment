@@ -25,7 +25,6 @@ class AuthenticationRepository {
           'Content-Type': 'application/json; charset=UTF-8',
         },
       );
-      print(response.body);
       if(response.statusCode == 200 || response.statusCode == 201){
         return jsonDecode(response.body);
       }else{
@@ -35,7 +34,7 @@ class AuthenticationRepository {
       rethrow;
     }catch (e){
       if(e is SocketException){
-        throw SocketException('No Internet Connection');
+        throw const SocketException('No Internet Connection');
       }
       throw Exception(e.runtimeType);
     }
@@ -54,7 +53,6 @@ class AuthenticationRepository {
           'Content-Type': 'application/json; charset=UTF-8',
         },
       );
-      print(response.body);
       if(response.statusCode == 200 || response.statusCode == 201){
         return jsonDecode(response.body);
       }else{
@@ -64,7 +62,7 @@ class AuthenticationRepository {
       rethrow;
     }catch (e){
       if(e is SocketException){
-        throw SocketException('No Internet Connection');
+        throw const SocketException('No Internet Connection');
       }
         throw Exception(e.runtimeType);
     }

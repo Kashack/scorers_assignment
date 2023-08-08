@@ -14,7 +14,7 @@ class UserDetail extends Equatable{
   final String? DOB;
   final String? nationality;
 
-  UserDetail(
+  const UserDetail(
       {required this.firstName,
       required this.lastName,
       required this.email,

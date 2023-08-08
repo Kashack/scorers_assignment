@@ -7,7 +7,7 @@ enum AuthenticationStatus {
   loading,
   error
 }
-
+@immutable
 abstract class AuthenticationState extends Equatable {
   final AuthenticationStatus status;
   final String? errorMessage;

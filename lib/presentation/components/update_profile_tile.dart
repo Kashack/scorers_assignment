@@ -2,18 +2,15 @@ import 'package:flutter/material.dart';
 
 class UpdateProfileTile extends StatelessWidget {
   final String title;
-  final String? subtitle;
   final Function(String?)? validator;
-  final Function(String) onChanged;
   final Widget? suffix_icon;
   final TextInputType textInputType;
+  final TextEditingController controller;
 
   UpdateProfileTile(
       {required this.title,
-      required this.subtitle,
       this.validator,
-      required this.onChanged,
-      this.suffix_icon, this.textInputType = TextInputType.text});
+      this.suffix_icon, this.textInputType = TextInputType.text, required this.controller});
 
   @override
   Widget build(BuildContext context) {
@@ -28,8 +25,7 @@ class UpdateProfileTile extends StatelessWidget {
           ),
         ),
         TextFormField(
-          initialValue: subtitle,
-          onChanged: onChanged,
+          controller: controller,
           validator: (value) {
             if (value!.isEmpty) {
               return 'Fill the Field';

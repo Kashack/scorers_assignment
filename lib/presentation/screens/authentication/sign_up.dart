@@ -1,13 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:scorers_assignment/business/bloc/authentication_bloc.dart';
-import 'package:scorers_assignment/business/bloc/authentication_bloc.dart';
+import 'package:scorers_assignment/business/bloc/authentication/authentication_bloc.dart';
 import 'package:scorers_assignment/presentation/components/custom_button.dart';
 import 'package:scorers_assignment/presentation/routers/router_constant.dart';
-import 'package:scorers_assignment/utility/constant.dart';
 
-import '../../../business/bloc/authentication_bloc.dart';
-import '../../../business/bloc/authentication_bloc.dart';
 import '../../components/custom_text_field.dart';
 
 class SignUpScreen extends StatefulWidget {
@@ -22,7 +18,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
   String? email;
   String? password;
   String? repeat_password;
-  bool _isLoading = false;
   final GlobalKey<FormState> _globalKey = GlobalKey<FormState>();
 
   @override
@@ -90,7 +85,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                   color: Colors.white,
                                   fontSize: 28),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 30,
                             )
                           ],

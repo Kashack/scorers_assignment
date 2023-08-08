@@ -5,7 +5,7 @@ class LiveMatchesScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
+    return const Center(
         child: Text(
           'Live Matches Tab',
           style: TextStyle(

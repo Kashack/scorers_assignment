@@ -5,11 +5,13 @@ import 'package:scorers_assignment/business/bloc/profile/profile_bloc.dart';
 import 'package:scorers_assignment/presentation/argurment/update_profile_data.dart';
 import 'package:scorers_assignment/presentation/routers/router_constant.dart';
 
-import '../../../../business/bloc/authentication_bloc.dart';
+import '../../../../business/bloc/authentication/authentication_bloc.dart';
 import '../../../components/custom_button.dart';
 import '../../../components/view_profile_tile.dart';
 
 class Profile extends StatelessWidget {
+  const Profile({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

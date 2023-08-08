@@ -5,7 +5,7 @@ class PastMatchesScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
+    return const Center(
         child: Text(
           'Past Matches Tab',
           style: TextStyle(

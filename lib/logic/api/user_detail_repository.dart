@@ -16,7 +16,6 @@ class UserDetailRepository{
           HttpHeaders.authorizationHeader: 'Bearer $authorizationToken',
         },
       );
-      print(response.body);
       if(response.statusCode == 200 || response.statusCode == 201){
         return UserDetail.fromJson(jsonDecode(response.body)["data"]);
       }else{
@@ -26,7 +25,7 @@ class UserDetailRepository{
       rethrow;
     }catch (e){
       if(e is SocketException){
-        throw SocketException('No Internet Connection');
+        throw const SocketException('No Internet Connection');
       }
       throw Exception(e.runtimeType);
     }
@@ -59,7 +58,7 @@ class UserDetailRepository{
       rethrow;
     }catch (e){
       if(e is SocketException){
-        throw SocketException('No Internet Connection');
+        throw const SocketException('No Internet Connection');
       }
       throw Exception(e.runtimeType);
     }

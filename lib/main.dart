@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:scorers_assignment/business/bloc/authentication_bloc.dart';
+import 'package:scorers_assignment/business/bloc/authentication/authentication_bloc.dart';
 import 'package:scorers_assignment/business/bloc/profile/profile_bloc.dart';
 import 'package:scorers_assignment/presentation/routers/router_constant.dart';
 import 'package:scorers_assignment/utility/constant.dart';
@@ -45,7 +45,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
           fontFamily: 'Roboto',
-          appBarTheme: AppBarTheme(
+          appBarTheme: const AppBarTheme(
               color: appbarBackgroundColor
           ),
           colorScheme: ColorScheme.fromSeed(seedColor: primaryColor),

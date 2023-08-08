@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:scorers_assignment/presentation/components/custom_button.dart';
 import 'package:scorers_assignment/presentation/routers/router_constant.dart';
 
-import '../../../business/bloc/authentication_bloc.dart';
+import '../../../business/bloc/authentication/authentication_bloc.dart';
 import '../../../utility/constant.dart';
 import '../../components/custom_text_field.dart';
 
@@ -22,13 +22,6 @@ class _LogInScreenState extends State<LogInScreen> {
   bool rememberPassword = false;
 
   bool _isObsecure = true;
-
-  // @override
-  // void dispose() {
-  //   _passwordController.dispose();
-  //   _emailController.dispose();
-  //   super.dispose();
-  // }
 
   @override
   Widget build(BuildContext context) {
@@ -72,7 +65,7 @@ class _LogInScreenState extends State<LogInScreen> {
                                 onTap: () {
                                   Navigator.pop(context);
                                 },
-                                child: Icon(
+                                child: const Icon(
                                   Icons.chevron_left,
                                   color: Colors.white,
                                 ),
@@ -102,7 +95,7 @@ class _LogInScreenState extends State<LogInScreen> {
                               color: Colors.white,
                             ),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 30,
                           )
                         ],
@@ -118,7 +111,7 @@ class _LogInScreenState extends State<LogInScreen> {
                           children: [
                             CustomTextField(
                               label: 'Email Address',
-                              autofillHints: [AutofillHints.email],
+                              autofillHints: const [AutofillHints.email],
                               validator: (validator) {
                                 if (validator!.isEmpty) {
                                   return 'Enter your Email Address';
@@ -130,7 +123,7 @@ class _LogInScreenState extends State<LogInScreen> {
                             ),
                             CustomTextField(
                               label: 'Password',
-                              autofillHints: [AutofillHints.password],
+                              autofillHints: const [AutofillHints.password],
                               validator: (validator) {
                                 if (validator!.isEmpty) {
                                   return 'Enter your Password';
@@ -140,14 +133,14 @@ class _LogInScreenState extends State<LogInScreen> {
                               isObscureText: _isObsecure,
                               suffixIcon: _isObsecure == true
                                   ? IconButton(
-                                      icon: Icon(Icons.visibility_off_outlined),
+                                      icon: const Icon(Icons.visibility_off_outlined),
                                       onPressed: () => setState(
                                           () => _isObsecure = !_isObsecure),
                                     )
                                   : IconButton(
                                       onPressed: () => setState(
                                           () => _isObsecure = !_isObsecure),
-                                      icon: Icon(Icons.visibility_outlined)),
+                                      icon: const Icon(Icons.visibility_outlined)),
                               onChanged: (value) => password = value,
                             ),
                             Row(
@@ -170,8 +163,8 @@ class _LogInScreenState extends State<LogInScreen> {
                                       ),
                                     ),
 
-                                    Padding(
-                                      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                                    const Padding(
+                                      padding: EdgeInsets.symmetric(horizontal: 8.0),
                                       child: Text(
                                         'Remember me',
                                         style: TextStyle(
@@ -185,7 +178,7 @@ class _LogInScreenState extends State<LogInScreen> {
                                 ),
                                 TextButton(
                                     onPressed: () {},
-                                    child: Text(
+                                    child: const Text(
                                       'Forget Password?',
                                       style: TextStyle(color: gray3),
                                     ))
@@ -210,19 +203,19 @@ class _LogInScreenState extends State<LogInScreen> {
                       ),
                     ),
                   ),
-                  Expanded(child: SizedBox()),
+                  const Expanded(child: SizedBox()),
                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: 16.0),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text('Don’t have an account? ',style: TextStyle(fontWeight: FontWeight.w500),),
+                        const Text('Don’t have an account? ',style: TextStyle(fontWeight: FontWeight.w500),),
                         GestureDetector(
                             onTap: () {
                               Navigator.pushNamed(
                                   context, RouterConstant.SignUp);
                             },
-                            child: Text(
+                            child: const Text(
                               'Sign Up',
                               style: TextStyle(
                                   decoration: TextDecoration.underline,fontWeight: FontWeight.w500),
