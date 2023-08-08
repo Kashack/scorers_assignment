@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:scorers_assignment/business/bloc/profile/profile_bloc.dart';
+import 'package:scorers_assignment/presentation/argurment/update_profile_data.dart';
 import 'package:scorers_assignment/presentation/routers/router_constant.dart';
 
 import '../../../../business/bloc/authentication_bloc.dart';
@@ -71,7 +72,7 @@ class Profile extends StatelessWidget {
           ),
           Expanded(
             child: BlocConsumer<ProfileBloc, ProfileState>(
-              buildWhen: (previous, current){
+              buildWhen: (previous, current) {
                 return current is ProfileSuccess || current is ProfileError;
               },
               builder: (context, userState) {
@@ -100,7 +101,9 @@ class Profile extends StatelessWidget {
                         ),
                         ViewProfileTile(
                           title: 'Age',
-                          subtitle: userState.userDetailModel.age.toString() ?? '',
+                          subtitle: userState.userDetailModel.age == null
+                              ? ''
+                              : userState.userDetailModel.age.toString(),
                         ),
                         ViewProfileTile(
                           title: 'Nationality',
@@ -116,7 +119,9 @@ class Profile extends StatelessWidget {
                             title: 'Update Profile',
                             onPressed: () {
                               Navigator.pushNamed(
-                                  context, RouterConstant.ProfileUpdate);
+                                  context, RouterConstant.ProfileUpdate,
+                                  arguments: UpdateProfileData(
+                                      userDetail: userState.userDetailModel));
                             },
                           ),
                         ),
@@ -141,11 +146,15 @@ class Profile extends StatelessWidget {
                 if (state is ProfileError) {
                   ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(content: Text(state.errorMessage)));
-                  if(state.errorMessage == "Auth token has expired, please login again"){
-                    context.read<AuthenticationBloc>().add(AuthenticationLogoutRequested());
+                  if (state.errorMessage ==
+                      "Auth token has expired, please login again") {
+                    context
+                        .read<AuthenticationBloc>()
+                        .add(AuthenticationLogoutRequested());
                     await AuthenticationBloc().clear().then((value) async {
-                      await HydratedBloc.storage.close().then((value){
-                        Navigator.pushNamedAndRemoveUntil(context, RouterConstant.HomePage, (route) => false);
+                      await HydratedBloc.storage.close().then((value) {
+                        Navigator.pushNamedAndRemoveUntil(
+                            context, RouterConstant.HomePage, (route) => false);
                       });
                     });
                   }

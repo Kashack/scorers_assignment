@@ -6,13 +6,14 @@ class UpdateProfileTile extends StatelessWidget {
   final Function(String?)? validator;
   final Function(String) onChanged;
   final Widget? suffix_icon;
+  final TextInputType textInputType;
 
   UpdateProfileTile(
       {required this.title,
       required this.subtitle,
       this.validator,
       required this.onChanged,
-      this.suffix_icon});
+      this.suffix_icon, this.textInputType = TextInputType.text});
 
   @override
   Widget build(BuildContext context) {
@@ -35,6 +36,7 @@ class UpdateProfileTile extends StatelessWidget {
             }
             return null;
           },
+          keyboardType: textInputType,
           decoration: InputDecoration(
             suffixIcon: suffix_icon,
             contentPadding: EdgeInsets.symmetric(horizontal: 10),
